@@ -1,13 +1,15 @@
-{% extends base.html %}
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
 {% block title %} Kirish {% endblock title %}
 
 {% block content %}
-<h2>
-    Saytga kirish
-</h2>
-<form method="post"> {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Kirish </button>
-
-</form>
+<div class="container">
+    <h2>Saytga kirish</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Kirish</button>
+    </form>
+</div>
 {% endblock content %}

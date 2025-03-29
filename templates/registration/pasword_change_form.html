@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Kalit so'zni o'zgartirish {% endblock title %}
+
+{% block content %}
+    <h1>Kalit so'zni o'zgartirish</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input class=" btn btn-success" type="submit" value="O'zgartirish">
+    </form>
+
+{% endblock content %}

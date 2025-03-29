@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
-{% block title %} Bosh sahifa {%endblock%}
+{% block title %} Bosh sahifa {% endblock %}
+
 {% block content %}
-{% if  user.is_authenticated %}
-{{user.username}}!
-<p> <a href="{% url 'logout'%}">Chiqib ketish </a></p>
-{%else%}
-<p>
-    Saytga kirganmisiz
-</p>
-<a href="{% url 'login' %}">Kirish</a>
-<a href="{% url 'signup' %}">Ro'yxatdan o'tish</a>
-{% endif %}
+<div class="container text-center mt-5">
+    {% if user.is_authenticated %}
+        <h2 class="mb-3">Xush kelibsiz, {{ user.username }}!</h2>
+        <p>
+            <a href="{% url 'logout' %}" class="btn btn-danger">Chiqib ketish</a>
+        </p>
+    {% else %}
+        <h2 class="mb-3">Saytga kirganmisiz?</h2>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{% url 'login' %}" class="btn btn-primary">Kirish</a>
+            <a href="{% url 'signup' %}" class="btn btn-success">Ro‘yxatdan o‘tish</a>
+        </div>
+    {% endif %}
+</div>
 {% endblock content %}
+
